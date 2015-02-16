@@ -8,11 +8,15 @@ License: Ruby License/GPL
 URL: http://www.ruby-lang.org
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%{%{__id_u} -n}
 BuildRequires: automake
-BuildRequires: zlib
 BuildRequires: zlib-devel
-BuildRequires: readline
-BuildRequires: libyaml
 BuildRequires: libyaml-devel
+BuildRequires: ncurses-devel
+BuildRequires: gdbm-devel
+BuildRequires: openssl-devel
+BuildRequires: libffi-devel
+BuildRequires: db4-devel
+BuildRequires: tcl-devel
+BuildRequires: unzip
 Requires: libyaml
 Source0: http://cache.ruby-lang.org/pub/ruby/2.2/ruby-%{ruby_version}.tar.gz
 Summary: An interpreter of object-oriented scripting language
@@ -37,7 +41,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-, root, root)
-/opt/$Name
+/opt/%{name}
 
 %changelog
 * Sun Feb 16 2015
