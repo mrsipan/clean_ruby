@@ -2,7 +2,6 @@
 
 Name: clean_ruby_22
 Version: %{ruby_version}
-#Release: 1%{?dist}
 Release: 1
 License: Ruby License/GPL
 URL: http://www.ruby-lang.org
@@ -26,7 +25,7 @@ Group: Development/Language
 Ruby is an interpreted scripting language.
 
 %prep
-%setup -n ruby-%{ruby-version}
+%setup -n ruby-%{ruby_version}
 
 %build
 export CFLAGs="$RPM_OPT_FLAGS -Wall -fno-strict-aliasing"
@@ -44,8 +43,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 /opt/%{name}
 
-%changelog
-* Sun Feb 16 2015
-- First Version
+# %changelog
+# * Sun Feb 16 2015
+# - First Version
 
 
