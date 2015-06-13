@@ -1,12 +1,12 @@
 %define ruby_version 2.2.0
-%define ruby_minor_version 
 
 Name: clean_ruby_22
-Version: %{ruby_version}%{ruby_minor_version}
-Release: 1%{?dist}
+Version: %{ruby_version}
+#Release: 1%{?dist}
+Release: 1
 License: Ruby License/GPL
 URL: http://www.ruby-lang.org
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%{%{__id_u} -n}
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: automake
 BuildRequires: zlib-devel
 BuildRequires: libyaml-devel
@@ -18,7 +18,7 @@ BuildRequires: db4-devel
 BuildRequires: tcl-devel
 BuildRequires: unzip
 Requires: libyaml
-Source0: http://cache.ruby-lang.org/pub/ruby/2.2/ruby-%{ruby_version}.tar.gz
+Source: ruby-%{ruby_version}.tar.gz
 Summary: An interpreter of object-oriented scripting language
 Group: Development/Language
 
@@ -30,7 +30,8 @@ Ruby is an interpreted scripting language.
 
 %build
 export CFLAGs="$RPM_OPT_FLAGS -Wall -fno-strict-aliasing"
-./configure --prefix=/opt/%{name}
+./configure --prefix=/opt/%{name} \
+  --enable-shared --enable-rpath --with-opt-dir=/opt/%{name}
 make %{?_smp_mflags}
 
 %install
