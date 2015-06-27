@@ -1,6 +1,6 @@
 %define ruby_version 2.2.0
 
-Name: clean_ruby_22
+Name: clean_ruby
 Version: %{ruby_version}
 Release: 1
 License: Ruby License/GPL
@@ -17,7 +17,7 @@ BuildRequires: db4-devel
 BuildRequires: tcl-devel
 BuildRequires: unzip
 Requires: libyaml
-Source: ruby-%{ruby_version}.tar.gz
+Source: ruby-%{version}.tar.gz
 Summary: An interpreter of object-oriented scripting language
 Group: Development/Language
 
@@ -25,12 +25,12 @@ Group: Development/Language
 Ruby is an interpreted scripting language.
 
 %prep
-%setup -n ruby-%{ruby_version}
+%setup -n ruby-%{version}
 
 %build
 export CFLAGs="$RPM_OPT_FLAGS -Wall -fno-strict-aliasing"
-./configure --prefix=/opt/%{name} \
-  --enable-shared --enable-rpath --with-opt-dir=/opt/%{name}
+./configure --prefix=/opt/%{name}/%{version} \
+  --enable-shared --enable-rpath --with-opt-dir=/opt/%{name}/%{version}
 make %{?_smp_mflags}
 
 %install
@@ -41,10 +41,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-, root, root)
-/opt/%{name}
+/opt/%{name}/%{version}
 
 # %changelog
 # * Sun Feb 16 2015
 # - First Version
-
-
