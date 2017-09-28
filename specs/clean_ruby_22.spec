@@ -1,4 +1,4 @@
-%define ruby_version 2.2.0
+%define ruby_version 2.4.2
 
 Name: clean_ruby
 Version: %{ruby_version}
@@ -44,5 +44,5 @@ rm -rf $RPM_BUILD_ROOT
 /opt/%{name}/%{version}
 
 # %changelog
-# * Sun Feb 16 2015
+# * Thu Sep 28 2017
 # - First Version
