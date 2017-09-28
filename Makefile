@@ -13,6 +13,7 @@ clean_ruby_src_rpm: ruby-2.4.2.tar.gz
 	dnf group install -y "Development Tools"
 	dnf group install -y "Development Libraries"
 	dnf group install -y "RPM Development Tools"
+	dnf install db4-devel libffi-devel libyaml-devel tcl-devel
 	rpmbuild -bs --nodeps --define "_sourcedir ." --define "_srcrpmdir ." specs/clean_ruby.spec
 	rpmbuild --rebuild *.src.rpm
 	dnf install -y /root/rpmbuild/RPMS/x86_64/clean_ruby-2.4.2-1.x86_64.rpm
