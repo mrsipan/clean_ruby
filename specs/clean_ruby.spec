@@ -11,6 +11,9 @@ BuildRequires: zlib-devel
 BuildRequires: libyaml-devel
 BuildRequires: ncurses-devel
 BuildRequires: gdbm-devel
+# BuildRequires: openssl-devel
+# for fedora 26
+BuildRequires: compat-openssl10-devel
 BuildRequires: openssl-devel
 BuildRequires: libffi-devel
 BuildRequires: db4-devel
