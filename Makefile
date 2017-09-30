@@ -1,4 +1,4 @@
-puppet: puppet-4.1.0.tar.gz facter-2.4.4.tar.gz hiera-2.0.0.tar.gz
+puppet: build_clean_ruby puppet-4.1.0.tar.gz facter-2.4.4.tar.gz hiera-2.0.0.tar.gz
 	tar -xvzf facter-2.4.4.tar.gz
 	/opt/clean_ruby/2.4.2/bin/ruby facter-2.4.4/install.rb
 	tar -xvzf hiera-2.0.0.tar.gz
@@ -9,14 +9,14 @@ puppet: puppet-4.1.0.tar.gz facter-2.4.4.tar.gz hiera-2.0.0.tar.gz
 ruby-2.4.2.tar.gz:
 	curl -o ruby-2.4.2.tar.gz http://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.2.tar.gz
 
-clean_ruby_src_rpm: ruby-2.4.2.tar.gz
+build_clean_ruby: ruby-2.4.2.tar.gz
 	dnf group install -y "Development Tools"
 	dnf group install -y "Development Libraries"
 	dnf group install -y "RPM Development Tools"
 	dnf install db4-devel libffi-devel libyaml-devel tcl-devel
 	rpmbuild -bs --nodeps --define "_sourcedir ." --define "_srcrpmdir ." specs/clean_ruby.spec
 	rpmbuild --rebuild *.src.rpm
-	dnf install -y /root/rpmbuild/RPMS/x86_64/clean_ruby-2.4.2-1.x86_64.rpm
+	dnf install -y ${HOME}/rpmbuild/RPMS/x86_64/clean_ruby-2.4.2-1.x86_64.rpm
 
 puppet-4.1.0.tar.gz:
 	curl -o puppet-4.1.0.tar.gz https://downloads.puppetlabs.com/puppet/puppet-4.1.0.tar.gz
