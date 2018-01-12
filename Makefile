@@ -12,6 +12,7 @@ ruby-2.4.2.tar.gz:
 build_clean_ruby: ruby-2.4.2.tar.gz
 	dnf group install -y "Development Tools"
 	dnf group install -y "Development Libraries"
+	dnf remove -y openssl-devel
 	dnf group install -y "RPM Development Tools"
 	dnf -y install rpm-build dnf-utils
 	yum-builddep -y specs/clean_ruby.spec
