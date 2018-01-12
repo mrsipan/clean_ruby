@@ -10,7 +10,7 @@ ruby-2.4.2.tar.gz:
 	curl -o ruby-2.4.2.tar.gz http://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.2.tar.gz
 
 build_clean_ruby: ruby-2.4.2.tar.gz
-	dnf -y install rpm-build
+	dnf -y install rpm-build yum-utils
 	yum-builddep -y specs/clean_ruby.spec
 	rpmbuild -bs --nodeps --define "_sourcedir ." --define "_srcrpmdir ." specs/clean_ruby.spec
 	rpmbuild --rebuild *.src.rpm
